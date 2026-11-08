@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تحدّي أمينة المكتبة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8f0;--card:#ffffff;--ink:#4a3f5c;--pink:#ffd6e0;--blue:#cfe8ff;--mint:#d4f5e6;--lemon:#fff3c4;--lav:#e6dcff;--ok:#b9ecd0;--bad:#ffc9c9;--line:#eadff5;--accent:#8a6fd1;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241f33;--card:#322b47;--ink:#f1ecfa;--pink:#5a3a4d;--blue:#34506b;--mint:#2f5546;--lemon:#5c5231;--lav:#4a3f73;--ok:#2f6b4c;--bad:#7a3a3a;--line:#493f66;--accent:#b9a2ff}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:'Tajawal','Segoe UI',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;overflow:hidden}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 22px;background:var(--lav);border-bottom:3px solid var(--line);flex-wrap:wrap}
+header b{font-size:1.15rem}
+#ind{font-weight:800;font-size:1.05rem;background:var(--card);padding:6px 16px;border-radius:999px}
+#dots{display:flex;gap:6px}
+#dots i{width:12px;height:12px;border-radius:50%;background:var(--card);transition:.3s}
+#dots i.on{background:var(--accent);transform:scale(1.35)}
+#dots i.done{background:var(--ok)}
+main{flex:1;overflow-y:auto;padding:18px 22px;position:relative}
+.page{max-width:980px;margin:0 auto;text-align:center}
+.fwd{animation:inF .5s ease both}.back{animation:inB .5s ease both}
+@keyframes inF{from{opacity:0;transform:translateX(-60px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes inB{from{opacity:0;transform:translateX(60px) scale(.97)}to{opacity:1;transform:none}}
+.art{font-size:5.2rem;line-height:1;display:inline-block;animation:fl 3s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-10px) rotate(4deg)}}
+.badge{display:inline-block;padding:6px 18px;border-radius:999px;background:var(--lemon);font-weight:800;margin:6px 0}
+h1{font-size:3rem;margin:.2em 0}h2{font-size:2rem;margin:.2em 0}
+p.lead{font-size:1.3rem;line-height:1.9;margin:.5em auto;max-width:720px}
+.hero{background:linear-gradient(135deg,var(--pink),var(--blue));border-radius:36px;padding:36px 20px;margin-top:6px}
+.shelf{font-size:2.2rem;letter-spacing:8px;margin-top:10px}
+.big{font:inherit;font-weight:800;font-size:1.5rem;padding:16px 44px;border:0;border-radius:999px;background:var(--accent);color:#fff;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.18);margin-top:14px;transition:.15s}
+.big:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.teams{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.team{flex:1 1 260px;border-radius:28px;padding:18px}
+.t0{background:var(--pink)}.t1{background:var(--blue)}
+.team .art{font-size:3.2rem}
+.team input{font:inherit;font-weight:800;font-size:1.4rem;text-align:center;width:100%;border:2px dashed var(--line);border-radius:16px;padding:8px;background:var(--card);color:var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.steps div{background:var(--mint);border-radius:20px;padding:14px;font-size:1.1rem;line-height:1.7}
+.card{background:var(--card);border:3px solid var(--line);border-radius:26px;padding:16px 18px;margin:12px 0;text-align:right}
+.q{font-size:1.45rem;font-weight:800;margin:0 0 10px;line-height:1.7}
+.opts{display:flex;gap:10px;flex-wrap:wrap}
+.opt{font:inherit;font-weight:700;font-size:1.25rem;flex:1 1 180px;padding:14px;border-radius:18px;border:3px solid var(--line);background:var(--lemon);color:var(--ink);cursor:pointer;transition:.15s}
+.opt:hover{transform:translateY(-2px)}
+.opt.sel{border-color:var(--accent);background:var(--lav)}
+.opt.ok{background:var(--ok);border-color:#3da56d}
+.opt.no{background:var(--bad);border-color:#d86a6a}
+.rev{font:inherit;font-weight:800;font-size:1.05rem;margin-top:10px;padding:9px 22px;border:0;border-radius:999px;background:var(--blue);color:var(--ink);cursor:pointer}
+.fb{display:inline-block;margin-inline-start:12px;font-weight:800;font-size:1.15rem}
+.rhead{background:var(--c);border-radius:28px;padding:12px;margin-bottom:6px}
+.rhead .art{font-size:3.4rem}
+.rhead h2{margin:0}
+.sc{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.sbox{flex:1 1 260px;border-radius:30px;padding:22px}
+.sbox .n{font-size:5rem;font-weight:800;line-height:1.1}
+.win{font-size:2.4rem;font-weight:800;margin:8px 0}
+.conf{position:fixed;top:-40px;font-size:1.8rem;animation:fall linear forwards;pointer-events:none;z-index:9}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.sbar{display:flex;gap:10px;justify-content:center;align-items:center;padding:6px 14px;background:var(--card);border-top:2px solid var(--line);flex-wrap:wrap}
+.sbar .tm{display:flex;align-items:center;gap:8px;padding:4px 12px;border-radius:999px;font-weight:800}
+.sbar button{font:inherit;font-weight:800;width:38px;height:38px;border-radius:50%;border:0;background:var(--card);color:var(--ink);font-size:1.3rem;cursor:pointer}
+nav{display:flex;justify-content:space-between;gap:12px;padding:10px 22px;background:var(--lav);padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+nav .big{margin:0;font-size:1.3rem;padding:12px 38px}
+nav .big:disabled{opacity:.35;cursor:default}
+nav .big.alt{background:var(--card);color:var(--ink)}
+</style>
+</head>
+<body>
+<header><b>📚 تحدّي أمينة المكتبة</b><div id="dots"></div><div id="ind"></div></header>
+<main><div id="stage" class="page"></div></main>
+<div class="sbar" id="sbar"></div>
+<nav><button class="big alt" id="prev">→ السابق</button><button class="big" id="next">التالي ←</button></nav>
+<script>
+const names=['فريق النجوم','فريق الأقمار'],sc=[0,0],emo=['🌟','🌙'];
+const TF=['صح ✔️','خطأ ✖️'];
+const ROUNDS={
+2:{t:'الجولة الأولى',s:'صح أو خطأ',e:'✅❌',c:'var(--mint)',d:'اختارت الفرق الإجابة، ثم تُكشف الإجابة الصحيحة.',q:[
+['تُرتَّب الكتب على الرفوف بحسب موضوعها.',TF,0],
+['يجوز الرسم والكتابة على صفحات الكتب المستعارة.',TF,1],
+['يجب إعادة الكتاب المستعار في الموعد المحدد.',TF,0],
+['المكتبة مكان مناسب للصراخ واللعب.',TF,1],
+['أمينة المكتبة تساعدنا في العثور على الكتاب المناسب.',TF,0]]},
+3:{t:'الجولة الثانية',s:'اختاري الإجابة الصحيحة',e:'🎯',c:'var(--lemon)',d:'اختاري الإجابة الصحيحة من بين الخيارات.',q:[
+['ماذا نفعل بالكتاب بعد الانتهاء من قراءته؟',['نرميه على الأرض','نعيده إلى مكانه على الرف','نأخذه معنا دون إذن'],1],
+['ماذا نستخدم لنحفظ مكاننا في الكتاب دون أن نؤذيه؟',['ثني الصفحة','فاصل الكتب','قلم الحبر'],1],
+['كيف نتصفّح الكتاب؟',['بسرعة وبعنف','بيد مبلّلة','بيدين نظيفتين وبلطف'],2],
+['ما الصوت المناسب داخل المكتبة؟',['الصراخ','الغناء','الهمس الهادئ'],2]]},
+4:{t:'الجولة الثالثة',s:'أنقذي المكتبة',e:'🛟',c:'var(--pink)',d:'الكتب اختلطت على الرفوف! ساعدي أمينة المكتبة بإرجاع كل كتاب إلى رفّه الصحيح.',q:[
+['📖 كتاب «ليلى والذئب»: لأي رفّ يعود؟',['رفّ القصص','رفّ العلوم','رفّ الخرائط'],0],
+['🪐 كتاب عن الكواكب والنجوم: لأي رفّ يعود؟',['رفّ القصص','رفّ العلوم','رفّ الخرائط'],1],
+['🗺️ أطلس العالم: لأي رفّ يعود؟',['رفّ القصص','رفّ العلوم','رفّ الخرائط'],2],
+['🐒 حكايات «كليلة ودمنة»: لأي رفّ تعود؟',['رفّ القصص','رفّ العلوم','رفّ الخرائط'],0]]},
+5:{t:'الجولة الرابعة',s:'من أنا؟',e:'🕵️‍♀️',c:'var(--blue)',d:'اقرئي الوصف وخمّني من أنا.',q:[
+['أنا مكان هادئ فيه آلاف الكتب، تزورينني لتقرئي وتستعيري. من أنا؟',['المكتبة','الملعب','المقصف'],0],
+['أحفظ لك مكانك في الكتاب دون أن أؤذي صفحاته. من أنا؟',['مشبك حديدي','فاصل الكتب','ممحاة'],1],
+['أرتّب الرفوف وأساعدك في العثور على كتابك. من أنا؟',['حارس البوابة','المعلّمة','أمينة المكتبة'],2],
+['تُسجَّل عليّ الكتب التي استعرتِها. من أنا؟',['بطاقة الاستعارة','ورقة الامتحان','بطاقة التهنئة'],0]]}
+};
+const PN=['البداية','طريقة اللعب','الجولة الأولى','الجولة الثانية','الجولة الثالثة','الجولة الرابعة','حساب النقاط','إعلان الفائز','الختام'];
+const N=PN.length;let cur=0,st={};
+const $=id=>document.getElementById(id),stage=$('stage');
+function quiz(p){const r=ROUNDS[p];
+let h=`<div class="rhead" style="--c:${r.c}"><span class="art">${r.e}</span><h2>${r.t}: ${r.s}</h2><p class="lead" style="margin:4px auto">${r.d}</p></div>`;
+r.q.forEach((q,i)=>{const s=(st[p+'_'+i]||{});
+h+=`<div class="card" data-p="${p}" data-i="${i}"><p class="q">${i+1}. ${q[0]}</p><div class="opts">`+
+q[1].map((o,j)=>{let c='opt';if(s.rev){if(j==q[2])c+=' ok';else if(s.pick===j)c+=' no'}else if(s.pick===j)c+=' sel';return `<button class="${c}" data-j="${j}">${o}</button>`}).join('')+
+`</div><button class="rev" data-rev="1">${s.rev?'إخفاء الإجابة':'إظهار الإجابة'}</button>`+
+(s.rev?`<span class="fb">${s.pick===undefined?'الإجابة الصحيحة: '+q[1][q[2]]:(s.pick===q[2]?'🎉 إجابة صحيحة!':'💡 الصحيح: '+q[1][q[2]])}</span>`:'')+`</div>`});
+return h}
+function page(p){
+if(p==0)return `<div class="hero"><span class="art">📚</span><h1>تحدّي أمينة المكتبة</h1><p class="lead">أهلًا بكنّ في مغامرة المكتبة! جاهزات للتحدّي؟</p><div class="shelf">📖 📕 📗 📘 📙</div><button class="big" onclick="go(1)">ابدئي التحدّي 🚀</button></div>`;
+if(p==1)return `<span class="art">🎮</span><h2>طريقة اللعب</h2><div class="steps"><div>👭 ينقسم الفصل إلى فريقين</div><div>❓ أربع جولات من الأسئلة</div><div>🤔 تتشاور الفرق ثم تُجيب</div><div>⭐ نقطة لكل إجابة صحيحة</div></div><div class="teams"><div class="team t0"><span class="art">${emo[0]}</span><input id="n0" value="${names[0]}" aria-label="اسم الفريق الأول"></div><div class="team t1"><span class="art">${emo[1]}</span><input id="n1" value="${names[1]}" aria-label="اسم الفريق الثاني"></div></div><p class="lead">يمكنك تغيير اسمي الفريقين بالضغط عليهما.</p>`;
+if(p>=2&&p<=5)return quiz(p);
+if(p==6)return `<span class="art">🧮</span><h2>حساب النقاط</h2><p class="lead">لتعديل النقاط استخدمي أزرار + و − في الشريط أسفل الشاشة.</p><div class="sc">`+[0,1].map(i=>`<div class="sbox t${i}"><span class="art" style="font-size:3rem">${emo[i]}</span><h2>${names[i]}</h2><div class="n">${sc[i]}</div></div>`).join('')+`</div>`;
+if(p==7){const a=sc[0],b=sc[1];const w=a==b?'🤝 تعادل! فريقان بطلان':'🏆 '+names[a>b?0:1]+' هو الفائز!';
+return `<span class="art">🏆</span><div class="win">${w}</div><p class="lead">النتيجة: ${names[0]} ${a} — ${names[1]} ${b}</p><div class="shelf">🎉 👏 🌟 👏 🎉</div>`}
+return `<div class="hero"><span class="art">💐</span><h2>شكرًا لكنّ</h2><p class="lead">نتمنى أن يكون النشاط قد نال إعجابكم، وإن شاء الله استمتعتوا معنا في تحدّي أمينة المكتبة.<br>شكرًا لحسن استماعكم، والسلام عليكم ورحمة الله وبركاته</p><div class="shelf">📚 ✨ 📚</div></div>`}
+function bar(){const e=$('sbar');e.style.display=(cur==0||cur==8)?'none':'flex';
+e.innerHTML=[0,1].map(i=>`<div class="tm t${i}">${emo[i]} ${names[i]}: <span>${sc[i]}</span><button data-s="${i},1">+</button><button data-s="${i},-1">−</button></div>`).join('')}
+function conf(){for(let i=0;i<36;i++){const s=document.createElement('span');s.className='conf';s.textContent=['🎉','⭐','🎊','📚','✨'][i%5];s.style.left=Math.random()*100+'vw';s.style.animationDuration=(2+Math.random()*2.5)+'s';s.style.animationDelay=Math.random()+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),6000)}}
+function show(dir){stage.className='page';stage.innerHTML=page(cur);void stage.offsetWidth;stage.classList.add(dir<0?'back':'fwd');
+$('main'||0);document.querySelector('main').scrollTop=0;
+$('ind').textContent='الصفحة '+(cur+1)+' من '+N+' · '+PN[cur];
+$('dots').innerHTML=PN.map((_,i)=>`<i class="${i==cur?'on':i<cur?'done':''}"></i>`).join('');
+$('prev').disabled=cur==0;$('next').disabled=cur==N-1;
+$('next').style.visibility=cur==0?'hidden':'visible';bar();if(cur==7)conf()}
+function go(p){if(p<0||p>=N)return;const d=p-cur;cur=p;show(d||1)}
+function syncNames(){[0,1].forEach(i=>{const el=$('n'+i);if(el)names[i]=el.value||names[i]})}
+$('prev').onclick=()=>{syncNames();go(cur-1)};
+$('next').onclick=()=>{syncNames();go(cur+1)};
+document.addEventListener('keydown',e=>{if(e.target.tagName=='INPUT')return;if(e.key=='ArrowLeft')$('next').click();if(e.key=='ArrowRight')$('prev').click()});
+stage.addEventListener('click',e=>{const c=e.target.closest('.card');if(!c)return;
+const k=c.dataset.p+'_'+c.dataset.i;st[k]=st[k]||{};
+const o=e.target.closest('.opt');
+if(o&&!st[k].rev)st[k].pick=+o.dataset.j;
+else if(e.target.closest('[data-rev]'))st[k].rev=!st[k].rev;else return;
+const y=document.querySelector('main').scrollTop;stage.innerHTML=page(cur);document.querySelector('main').scrollTop=y});
+$('sbar').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;
+const [i,d]=b.dataset.s.split(',').map(Number);sc[i]=Math.max(0,sc[i]+d);
+if(cur==6){const y=document.querySelector('main').scrollTop;stage.innerHTML=page(6);document.querySelector('main').scrollTop=y}bar()});
+show(1);
+</script>
+</body>
+</html>
